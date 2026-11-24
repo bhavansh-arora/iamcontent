@@ -1,0 +1,102 @@
+{"title": "The Unsent Letters Movement · I Am Content", "desc": "Write the letter you never sent. A quiet, private digital post office: drop your letter, keep a retrieval code, and come back to it whenever you are ready.", "hero": "dark", "nav": "letters", "og": "postcard.webp"}
+<section class="hero hero--dark hero-page" aria-labelledby="hero-title">
+  <div class="hero__glow" aria-hidden="true"><i></i><i></i><i></i></div>
+  {{FERN}}
+  <div class="wrap hero-page__grid">
+    <div class="hero-page__copy">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span>/</span><span>Unsent Letters</span></nav>
+      <p class="eyebrow" data-reveal>The Unsent Letters Movement</p>
+      <h1 class="display" id="hero-title" data-split>Send it. Don’t send it. <em class="hl">Just write it.</em></h1>
+      <p class="lead" data-reveal style="--rd:.3">If we could say what we wanted to a friend, a sibling, a parent or another version of ourselves, life would be so much easier. Maybe we can begin with one small thing left unsaid.</p>
+      <div class="btns" data-reveal style="--rd:.45"><a class="btn btn--fern" href="#write"><span>Write a letter</span><span class="btn__ico">{{ARROW}}</span></a><span class="chip"><i class="dot"></i><span data-letter-total>43</span>&nbsp;unsent letters held here</span></div>
+    </div>
+    <div class="hero-page__art" data-reveal="fade">
+      <figure class="frame tape" data-clip style="transform:rotate(3deg)"><img src="assets/img/postbox.webp" alt="A red postbox on a black and white wall" fetchpriority="high"></figure>
+    </div>
+  </div>
+</section>
+
+{{MARQUEE:t-fern::Dear Mum|dear younger me|Dear friend|dear you|Dear Dad|dear sister}}
+
+<section class="sec t-paper" id="write" aria-labelledby="w-title">
+  <div class="wrap grid-2 grid-2--top">
+    <div class="stack" style="--s:22px">
+      <p class="eyebrow">Drop it here</p>
+      <h2 class="h1" id="w-title" data-split>Write it. Post it. <em>Come back</em> whenever.</h2>
+      <p class="body-l" data-reveal>You don’t need to send it to the person it’s meant for. Drop it here and we’ll give you a code to read it again, like a post office holding all your unsent letters until you’re ready.</p>
+      <div class="t-dark card" style="background:var(--forest);margin-top:12px" data-reveal>
+        <p class="eyebrow">Don’t know where to start?</p>
+        <p class="muted">Tap a line and let the rest follow.</p>
+        <div class="prompts">
+          <button class="prompt" type="button">“What I never got to say to you is…”</button>
+          <button class="prompt" type="button">“If I knew you would listen without defending yourself, I would tell you…”</button>
+          <button class="prompt" type="button">“What I wish my younger self had heard is…”</button>
+          <button class="prompt" type="button">“I’m still carrying this because…”</button>
+        </div>
+      </div>
+    </div>
+    <div>
+      <form class="letter-paper form" data-letter-form data-endpoint="" data-reveal>
+        <div class="field" style="max-width:70%"><label for="letter-to">To (optional)</label><input id="letter-to" name="to" placeholder="Mum, my younger self, you…"></div>
+        <div class="field"><label for="letter-body" class="sr-only">Your letter</label><textarea id="letter-body" name="letter" required placeholder="Dear…"></textarea></div>
+        <div class="field"><label for="letter-email">Your email</label><input id="letter-email" name="email" type="email" autocomplete="email" required><span class="micro">Used only to send your retrieval code, and to reach you if something worries us.</span></div>
+        <label class="consent"><input type="checkbox" id="letter-age" required><span>I am 18 or over.</span></label>
+        <label class="consent"><input type="checkbox" id="letter-ok" required><span>I understand every letter is read by the team, who may email me if something worries them, and that only the essence of my words may ever be shared, anonymously.</span></label>
+        <button class="btn btn--ink btn--block" type="submit"><span>Drop it in the postbox</span><span class="btn__ico">{{ARROW}}</span></button>
+      </form>
+      <div class="letter-paper" data-letter-done hidden>
+        <div class="stack" style="--s:18px">
+          <p class="hand" style="color:var(--moss)">Your letter has been dropped.</p>
+          <h3 class="h2">Keep this code <em>safe.</em></h3>
+          <p>You’ll need it to read your letter again. If you lose it, we can email it to you.</p>
+          <p class="code-box" id="letter-code" data-letter-code>----</p>
+          <div class="btns"><button class="copy-btn" data-copy-from="#letter-code" type="button">{{ICON:copy}}<span>Copy code</span></button><button class="copy-btn" data-letter-again type="button"><span>Write another letter</span></button></div>
+          <p class="micro">Writing can bring feelings up. If you’d like support with what surfaces, you’re welcome to explore <a href="coaching.html" style="text-decoration:underline">coaching</a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec t-dark" aria-labelledby="r-title">
+  <div class="wrap grid-2 grid-2--top">
+    <div class="stack" style="--s:22px">
+      <p class="eyebrow">Wrote one before?</p>
+      <h2 class="h1" id="r-title" data-split>Open your <em class="hl">letter.</em></h2>
+      <p class="lead" data-reveal>Enter your code to read your letter again. Lost it? Ask us to email it to the address you used.</p>
+      <p class="body-l muted" data-reveal>Prefer paper? Email a photo of a handwritten letter or postcard, or a link to something you’ve written, to <a href="mailto:unsentletters@iamcontent.care" style="text-decoration:underline;color:var(--fern)">unsentletters@iamcontent.care</a></p>
+    </div>
+    <div class="stack" style="--s:16px" data-reveal>
+      <form class="form card" data-retrieve>
+        <div class="field"><label for="retrieve-code">Your code</label><input id="retrieve-code" name="code" placeholder="ABCD-1234" autocomplete="off" required></div>
+        <button class="btn btn--fern btn--block" type="submit"><span>Open my letter</span><span class="btn__ico">{{ARROW}}</span></button>
+        <div class="letter-paper" data-retrieve-out hidden aria-live="polite"></div>
+      </form>
+      <form class="form card" data-form="code" data-endpoint="">
+        <div class="field"><label for="lost-email">Lost your code? The email you used</label><input id="lost-email" name="email" type="email" autocomplete="email" required></div>
+        <button class="btn btn--ghost btn--ico btn--block" type="submit"><span>Send my code</span><span class="btn__ico">{{ARROW}}</span></button>
+      </form>
+      <div class="form__ok" hidden><p class="h4">On its way.</p><p>If letters were dropped from that address, we’ll email the codes.</p></div>
+      <div class="helpline">
+        <strong>This is not a crisis service.</strong>
+        <span>If you’re in distress, please contact a helpline or someone you trust right away.</span>
+        <span>Tele-MANAS (free, 24/7): <b>14416</b> or <b>1-800-891-4416</b></span>
+        <span>Childline, for anyone under 18 (free, 24/7): <b>1098</b></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec t-paper" aria-labelledby="faq-title">
+  <div class="wrap faq-grid">
+    <div class="sec-head"><p class="eyebrow">Before you write</p><h2 class="h1" id="faq-title" data-split>Questions people <em>ask.</em></h2></div>
+    {{FAQ [
+      ["Where can I write an unsent letter when I’m feeling low or need closure?", "Right here. The Unsent Letters Movement is a quiet, private digital post office. Write what you’ve been holding onto without sending it, and keep a personal code so you can come back and read your words whenever you wish."],
+      ["How do I say something when I don’t know how to say it?", "Write for yourself first, without worrying how it will land or whether it sounds polished. Even three honest sentences create breathing room and help you understand what you actually feel."],
+      ["Can I send a handwritten letter or postcard instead?", "Yes. Email an image of your letter, journal page or postcard, or a link to something you’ve written, to unsentletters@iamcontent.care."],
+      ["Who reads my letter?", "Every letter is read by our team. We don’t reply to letters, but if something in yours worries us, we may reach out. If we ever share anything, it is only the essence of your words, anonymously."]
+    ] FAQ}}
+  </div>
+</section>
+
+{{CTA:Some words need <em>a listener.</em>|If writing brought something up, you don’t have to carry it alone. Book a free 15-minute call.}}
