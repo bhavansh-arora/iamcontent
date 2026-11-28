@@ -1,6 +1,6 @@
-{"title": "I Am Content · Life Coaching & Counselling with Ruchi Widge Bagga", "desc": "One-to-one life coaching and counselling with Ruchi Widge Bagga. Counselling depth, coaching momentum. Virtual sessions worldwide and in person in Goa.", "hero": "dark", "nav": "home"}
+{"title": "I Am Content · Life Coaching & Counselling with Ruchi Widge Bagga", "desc": "One-to-one life coaching and counselling with Ruchi Widge Bagga. Counselling depth, coaching momentum. Virtual sessions worldwide and in person in Goa.", "hero": "dark", "nav": "home", "curtain": "I am <em>content</em>"}
 <!-- ============ HERO ============ -->
-<section class="hero hero--dark hero-home" aria-labelledby="hero-title">
+<section class="hero hero--dark hero-home" aria-labelledby="hero-title" data-note="Your own headline, kept. The second button now answers it: the 60-second Loop Check. Every “Book” button leads to the on-site booking page instead of a new Calendly tab.">
   <div class="hero__glow" aria-hidden="true"><i></i><i></i><i></i></div>
   {{FERN}}
   <div class="wrap hero-home__grid">
@@ -10,11 +10,11 @@
       <p class="lead" data-reveal style="--rd:.35">I Am Content brings the depth of counselling together with the forward movement of coaching. A space for life transitions, relationships and motherhood, where you reconnect with yourself and move on with clarity.</p>
       <div class="btns" data-reveal style="--rd:.5">
         {{BTN:Book a discovery call||btn--fern}}
-        <a class="btn btn--ghost" href="#start">Find your starting point</a>
+        <a class="btn btn--ghost" href="loop-check.html">Take the 60-second Loop Check</a>
       </div>
       <div class="hero-home__meta" data-reveal style="--rd:.65">
         <span class="chip"><i class="dot"></i> Taking new clients</span>
-        <span class="micro">15-minute call · no pressure · no commitment</span>
+        <a class="micro hero-home__alt" href="#start">Not sure where to begin? Find your starting point ↓</a>
       </div>
     </div>
     <div class="hero-home__art" data-reveal="fade" style="--rd:.2">
@@ -118,7 +118,8 @@
         <p class="eyebrow">How the work moves</p>
         <h2 class="h1" id="method-title" data-split>Three steps. <em>No shortcuts.</em></h2>
         <p class="lead">Lasting change comes from understanding the patterns underneath, not from surface fixes. Every journey moves through the same three doors.</p>
-        <p class="hand" style="color:var(--fern)">keep scrolling →</p>
+        <p class="hand hs__hint" style="color:var(--fern)">keep scrolling →</p>
+        <a class="link-arrow" href="loop-check.html">Which door are you at? Take the Loop Check {{ARROW}}</a>
       </div>
       <article class="step">
         <span class="step__n" aria-hidden="true">01</span>
@@ -144,7 +145,7 @@
 </section>
 
 <!-- ============ QUIZ ============ -->
-<section class="sec t-paper" id="start" aria-labelledby="quiz-title">
+<section class="sec t-paper" id="start" aria-labelledby="quiz-title" data-note="Two questions route a new mother to motherhood, someone carrying words to Unsent Letters, a team lead to talks, and someone ready to talk to a call. The answer travels with them to the booking page.">
   <div class="wrap grid-2">
     <div class="stack" style="--s:24px">
       <p class="eyebrow">Find your starting point</p>
@@ -183,7 +184,7 @@
         <figure class="frame"><img data-r-img src="assets/img/see-the-person.webp" alt=""></figure>
       </div>
       <script type="application/json">{
-        "coach": {"title": "1:1 Coaching & Counselling", "text": "Weekly 60-minute sessions over about three months, combining the depth of counselling with the momentum of coaching. Start with a free 15-minute call.", "cta": "Book a discovery call", "href": "https://calendly.com/ruchiwidgebagga/book-a-discovery-call", "img": "assets/img/see-the-person.webp", "alt": "Oil pastel face in bright colours"},
+        "coach": {"title": "1:1 Coaching & Counselling", "text": "Weekly 60-minute sessions over about three months, combining the depth of counselling with the momentum of coaching. Start with a free 15-minute call.", "cta": "Book a discovery call", "href": "book.html", "img": "assets/img/see-the-person.webp", "alt": "Oil pastel face in bright colours"},
         "mother": {"title": "Motherhood coaching", "text": "Private online sessions that fit around your routine, with morning, evening and weekend slots. A space for the woman behind the mother.", "cta": "See the motherhood space", "href": "motherhood.html", "img": "assets/img/motherhood-art.webp", "alt": "Watercolour of a woman among flowers"},
         "audio": {"title": "For the Mother Behind the Baby", "text": "An audio companion for the quiet nights when your thoughts are loud. Join the waitlist and be the first to hear it.", "cta": "Join the waitlist", "href": "motherhood.html#waitlist", "img": "assets/img/mother-behind-baby.webp", "alt": "Nesting dolls painted in pink watercolour"},
         "letters": {"title": "The Unsent Letters Movement", "text": "Write the letter you never sent. Drop it here, keep a private code, and come back to it whenever you’re ready.", "cta": "Write a letter", "href": "unsent-letters.html", "img": "assets/img/postcard.webp", "alt": "A handwritten postcard"},

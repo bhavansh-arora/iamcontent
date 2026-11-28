@@ -6,13 +6,16 @@ Each page lives in _build/pages/<name>.html. The first line is JSON front matter
 The rest is the page body. Shortcodes like {{ARROW}} or {{CTA:Heading|Sub}} are expanded.
 Run:  python3 _build/build.py
 """
-import json, math, re, html
+import json, math, re, html, hashlib, datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 PAGES = Path(__file__).resolve().parent / "pages"
-BOOK = "https://calendly.com/ruchiwidgebagga/book-a-discovery-call"
-SITE = "https://iamcontent.care"
+CALENDLY = "https://calendly.com/ruchiwidgebagga/book-a-discovery-call"
+BOOK = "book.html"            # every "Book" button leads to the on-site booking page (Calendly embedded there)
+SITE = "https://iamcontent.care"                 # go-live domain: canonicals + sitemap
+ASSET_HOST = "https://iamcontent.codebunny.net"  # where og images live today; set to SITE once the site moves
+NOINDEX = {"preview-pack", "404"}
 
 NAV = [  # (slug, label, file, art)
     ("home", "Home", "index.html", "ruchi-portrait-art.webp"),
@@ -21,6 +24,7 @@ NAV = [  # (slug, label, file, art)
     ("programs", "Companions &amp; Programs", "programs.html", "mother-behind-baby.webp"),
     ("reflections", "Reflections", "reflections.html", "kettle.webp"),
     ("letters", "Unsent Letters", "unsent-letters.html", "postcard.webp"),
+    ("loop", "The Loop Check", "loop-check.html", "coaching-hero.webp"),
     ("about", "About Ruchi", "about.html", "ruchi-photo.webp"),
     ("contact", "Contact", "contact.html", "roses.webp"),
 ]
@@ -189,7 +193,7 @@ def header(active):
     </a>
     <nav class="hdr__nav" aria-label="Primary">{links}</nav>
     <div class="hdr__cta">
-      {btn("Book a call", cls="btn--fern btn--sm", ico=False)}
+      {btn("Book a call", cls="btn--fern btn--sm hdr__book", ico=False)}
       <button class="menu-btn" aria-expanded="false" aria-controls="menu"><span class="menu-btn__label">Menu</span><span class="menu-btn__lines" aria-hidden="true"></span></button>
     </div>
   </div>
@@ -224,15 +228,16 @@ def footer():
       <div><h3>Work together</h3><ul>
         <li><a href="coaching.html">1:1 Coaching</a></li><li><a href="motherhood.html">Motherhood</a></li>
         <li><a href="programs.html">Companions &amp; Programs</a></li><li><a href="programs.html#talks">Group programs &amp; talks</a></li>
-        <li><a href="{BOOK}" target="_blank" rel="noopener">Book a discovery call</a></li></ul></div>
+        <li><a href="{BOOK}">Book a discovery call</a></li></ul></div>
       <div><h3>Free spaces</h3><ul>
-        <li><a href="reflections.html">Reflections</a></li><li><a href="unsent-letters.html">Unsent Letters Movement</a></li>
+        <li><a href="loop-check.html">The Loop Check</a></li><li><a href="reflections.html">Reflections</a></li><li><a href="unsent-letters.html">Unsent Letters Movement</a></li>
         <li><a href="from-the-coaching-room.html">From the Coaching Room</a></li><li><a href="echoes-at-the-nest.html">Echoes at the Nest</a></li></ul></div>
       <div><h3>About</h3><ul>
         <li><a href="about.html">The person behind I Am Content</a></li><li><a href="what-guides-our-work.html">What guides our work</a></li>
         <li><a href="contact.html">Contact</a></li><li><a href="mailto:ruchi@iamcontent.care">ruchi@iamcontent.care</a></li></ul></div>
     </div>
-    <p class="ftr__big" aria-label="Life is to live."><span>Life is</span> <em>to live.</em></p>
+    {WORDMARK}
+    <p class="ftr__line">To keep walking. To remember your purpose. To surrender. To rise, and to keep walking with confidence.</p>
     <div class="ftr__bottom">
       <span>© <span data-year>2026</span> I Am Content · Ruchi Widge Bagga</span>
       <span class="ftr__note">Coaching and counselling are not a crisis service. In India, Tele-MANAS is free and open 24/7 on 14416.</span>
@@ -248,23 +253,41 @@ def footer():
 <div class="hover-img" aria-hidden="true"><img src="" alt=""></div>
 <div class="cursor" aria-hidden="true"><div class="cursor__dot"></div><div class="cursor__ring"><span></span></div></div>
 <div class="grain" aria-hidden="true"></div>
-<div class="curtain" aria-hidden="true">{GLYPH.replace('<svg ', '<svg fill="none" stroke="currentColor" stroke-width="2" ')}</div>'''
+<div class="curtain" aria-hidden="true"><div class="curtain__in">{GLYPH.replace('<svg ', '<svg fill="none" stroke="currentColor" stroke-width="2" ')}<p class="curtain__title"></p></div></div>'''
+
+def _wordmark():
+    words = [("Life", ""), ("is", ""), ("to", " ftr__w--em"), ("live.", " ftr__w--em")]
+    out, c = [], 0
+    for w, cls in words:
+        chars = "".join(f'<span class="ch"><i style="--c:{(c := c + 1)}">{ch}</i></span>' for ch in w)
+        out.append(f'<span class="ftr__w{cls}" aria-hidden="true">{chars}</span>')
+    loop = '<svg class="ftr__loop" viewBox="0 0 200 90" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M18 52C10 26 64 8 112 10s82 18 76 42-62 34-112 30S6 64 30 40c18-18 64-24 104-18"/></svg>'
+    return f'<p class="ftr__big" data-wordmark role="img" aria-label="Life is to live.">{" ".join(out)}{loop}</p>'
+WORDMARK = _wordmark()
 
 LOADER = f'''<div class="loader" aria-hidden="true"><div class="loader__in">{GLYPH}<p class="loader__word"><span>I am content</span></p><p class="loader__count">000</p></div></div>'''
 
-FONTS = "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400;500;600;700&family=Caveat:wght@500;600&display=swap"
+def _build_id():
+    h = hashlib.sha1()
+    for f in sorted((ROOT / "assets").rglob("*.js")) + sorted((ROOT / "assets/css").glob("*.css")) + sorted(PAGES.glob("*.html")) + [Path(__file__)]:
+        h.update(f.read_bytes())
+    return h.hexdigest()[:10]
 
-def page(meta, body, name):
+TITLES = {}   # filled in main(): page -> curtain title
+
+def page(meta, body, name, build_id):
     title = meta["title"]; desc = meta["desc"]; hero = meta.get("hero", "dark"); active = meta.get("nav", "")
-    fname = "index.html" if name == "index" else f"{name}.html"
-    canonical = SITE + "/" + ("" if name == "index" else name + "/")
-    og_img = meta.get("og", "ruchi-portrait-art.webp")
+    path = "" if name == "index" else name + "/"
+    canonical = SITE + "/" + path
+    og_img = f"{ASSET_HOST}/assets/og/{name}.jpg"
     extra_head = meta.get("head", "")
+    robots = '<meta name="robots" content="noindex, nofollow">\n' if name in NOINDEX else ""
+    base = '<base href="/">\n' if name == "404" else ""
     schema = ""
     if name == "index":
         schema = '<script type="application/ld+json">' + json.dumps({
             "@context": "https://schema.org", "@type": "ProfessionalService", "name": "I Am Content",
-            "description": desc, "url": SITE, "email": "ruchi@iamcontent.care",
+            "description": desc, "url": SITE, "email": "ruchi@iamcontent.care", "image": og_img,
             "areaServed": ["Goa, India", "Worldwide (online)"], "founder": {"@type": "Person", "name": "Ruchi Widge Bagga",
             "jobTitle": "Life Coach and Counsellor", "sameAs": [u for u, _ in SOCIAL.values()]}}) + "</script>"
     return f'''<!doctype html>
@@ -272,32 +295,41 @@ def page(meta, body, name):
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>{title}</title>
-<meta name="claude:viewport-fit-sides" content="cover">
+{base}<title>{title}</title>
 <meta name="description" content="{desc}">
-<link rel="canonical" href="{canonical}">
+{robots}<link rel="canonical" href="{canonical}">
+<meta name="build" content="{build_id}">
 <meta name="theme-color" content="#13291b">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="I Am Content">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
-<meta property="og:image" content="{SITE}/assets/img/{og_img}">
+<meta property="og:url" content="{canonical}">
+<meta property="og:image" content="{og_img}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{og_img}">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="{FONTS}">
-<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preload" href="assets/fonts/bricolage-grotesque-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/hanken-grotesk-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/style.css?v={build_id}">
 {schema}{extra_head}
 </head>
 <body data-hero="{hero}" data-page="{name}" id="top">
 {LOADER if name == "index" else ""}
 {header(active)}
-<main id="main">
+<main id="main" data-title="{html.escape(meta.get("curtain", TITLES.get(name, "")), quote=True)}">
 {body}
 </main>
 {footer()}
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
-<script src="assets/js/main.js" defer></script>
+<script type="application/json" id="page-titles">{json.dumps(TITLES, ensure_ascii=False)}</script>
+<script src="assets/vendor/lenis.min.js" defer></script>
+<script src="assets/js/main.js?v={build_id}" defer></script>
 </body>
 </html>
 '''
@@ -343,20 +375,30 @@ def img_attrs(html_text):
     return re.sub(r"<img\b[^>]*>", rep, html_text)
 
 def main():
-    built = []
+    build_id = _build_id()
+    pages = []
     for p in sorted(PAGES.glob("*.html")):
         raw = p.read_text(encoding="utf-8")
         first, rest = raw.split("\n", 1)
-        meta = json.loads(first)
+        pages.append((p.stem, json.loads(first), rest))
+    for name, meta, _ in pages:
+        TITLES[name] = meta.get("curtain", "")
+    built = []
+    for name, meta, rest in pages:
         body = expand(faqs_expand(rest))
-        out = img_attrs(page(meta, body, p.stem))
-        target = ROOT / ("index.html" if p.stem == "index" else f"{p.stem}.html")
+        out = img_attrs(page(meta, body, name, build_id))
+        target = ROOT / ("index.html" if name == "index" else f"{name}.html")
         target.write_text(out, encoding="utf-8")
         built.append(target.name)
     (ROOT / "assets/img/favicon.svg").write_text(
         '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><rect width="48" height="48" rx="12" fill="#13291b"/>'
         '<path d="M24 42c0-10 2-15 2-22a8 8 0 1 0-8 8c3.4 0 5-2.8 3.6-5.2" fill="none" stroke="#8fd15f" stroke-width="3.2" stroke-linecap="round"/></svg>')
-    print("built:", ", ".join(built))
+    today = datetime.date.today().isoformat()
+    urls = "".join(f"  <url><loc>{SITE}/{'' if n == 'index' else n + '/'}</loc><lastmod>{today}</lastmod></url>\n"
+                   for n, m, _ in pages if n not in NOINDEX)
+    (ROOT / "sitemap.xml").write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}</urlset>\n')
+    (ROOT / "robots.txt").write_text(f"User-agent: *\nDisallow: /preview-pack.html\nDisallow: /_build/\n\nSitemap: {SITE}/sitemap.xml\n")
+    print("built:", ", ".join(built), "| build", build_id)
 
 if __name__ == "__main__":
     main()

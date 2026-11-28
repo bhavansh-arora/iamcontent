@@ -1,3 +1,5 @@
 _previews/
 __pycache__/
 .DS_Store
+EMAIL-REPLY*.md
+*.reply.md

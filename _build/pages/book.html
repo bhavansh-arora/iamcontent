@@ -1,0 +1,106 @@
+{"title": "Book a Free Discovery Call · I Am Content", "desc": "Book a free 15-minute discovery call with Ruchi Widge Bagga. No pressure, no commitment. Tell her a little first if you like, then pick a time that suits you.", "hero": "dark", "nav": "book", "curtain": "Book a <em>call</em>"}
+<section class="hero hero--dark hero-page" aria-labelledby="hero-title">
+  <div class="hero__glow" aria-hidden="true"><i></i><i></i><i></i></div>
+  {{FERN}}
+  <div class="wrap hero-page__grid" style="align-items:center">
+    <div class="hero-page__copy">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span>/</span><span>Book a call</span></nav>
+      <p class="eyebrow" data-reveal>Free discovery call · 15 minutes</p>
+      <h1 class="display" id="hero-title" data-split>A safe space to see if <em class="hl">we’re a fit.</em></h1>
+      <p class="lead" data-reveal style="--rd:.3">Fifteen minutes with Ruchi. No pressure, no commitment. Tell her a little first if you like, then pick a time that suits you.</p>
+      <div class="btns" data-reveal style="--rd:.45"><a class="btn btn--fern" href="#booking"><span>Choose a time</span><span class="btn__ico">{{ARROW}}</span></a><span class="micro">Online, worldwide · In person in Goa</span></div>
+    </div>
+    <div class="hero-page__art" data-reveal="fade">
+      <figure class="frame frame--arch" data-clip style="max-width:440px"><img src="assets/img/ruchi-photo.webp" alt="Photograph of Ruchi Widge Bagga smiling" fetchpriority="high"></figure>
+      {{BADGE}}
+    </div>
+  </div>
+</section>
+
+<section class="sec t-paper" id="booking" aria-labelledby="bk-title" data-note="Every “Book” button on the site now lands here instead of leaving for Calendly in a new tab. Anything a visitor shared in the Loop Check, the starting-point quiz or the self-check is waiting below, and goes into Calendly’s first question, so Ruchi reads it before the call.">
+  <div class="wrap">
+    <div class="sec-head sec-head--split">
+      <p class="eyebrow">Two small steps</p>
+      <h2 class="h1" id="bk-title" data-split>Tell Ruchi a little. <em>Then pick a time.</em></h2>
+      <p class="lead" data-reveal>Step one is optional. Whatever you write goes straight into the booking form, so the call can start where you are.</p>
+    </div>
+    <div class="bk" data-book data-calendly="https://calendly.com/ruchiwidgebagga/book-a-discovery-call">
+      <form class="bk__intake card" data-book-form data-reveal>
+        <div class="bk__step"><span>1</span><p class="h4">What would you like to talk about? <small>Optional</small></p></div>
+        <fieldset class="field" style="border:0;padding:0;margin:0">
+          <legend class="sr-only">Topics</legend>
+          <div class="seg seg--multi">
+            <input type="checkbox" name="topics" id="bt1" value="A life or work transition"><label for="bt1">A life or work transition</label>
+            <input type="checkbox" name="topics" id="bt2" value="Relationships"><label for="bt2">Relationships</label>
+            <input type="checkbox" name="topics" id="bt3" value="Motherhood"><label for="bt3">Motherhood</label>
+            <input type="checkbox" name="topics" id="bt4" value="Grief and loss"><label for="bt4">Grief and loss</label>
+            <input type="checkbox" name="topics" id="bt5" value="Feeling stuck in a loop"><label for="bt5">Feeling stuck in a loop</label>
+            <input type="checkbox" name="topics" id="bt6" value="Not sure yet"><label for="bt6">Not sure yet</label>
+          </div>
+        </fieldset>
+        <div class="field"><label for="bk-note">Anything you’d like Ruchi to know before you talk?</label><textarea id="bk-note" name="note" maxlength="500" placeholder="A sentence or two is plenty." style="min-height:120px"></textarea></div>
+        <div class="form__row">
+          <div class="field"><label for="bk-name">Your name</label><input id="bk-name" name="name" autocomplete="name"></div>
+          <div class="field"><label for="bk-email">Email</label><input id="bk-email" name="email" type="email" autocomplete="email"></div>
+        </div>
+        <div class="ctx-box" data-ctx-box hidden>
+          <p class="eyebrow eyebrow--plain">You’ve already shared</p>
+          <ul class="ctx-list" data-ctx-list></ul>
+          <p class="micro">This comes from the tools you used on the site. Remove anything you’d rather not send.</p>
+        </div>
+        <button class="btn btn--ink btn--block" type="submit"><span>Show available times</span><span class="btn__ico">{{ARROW}}</span></button>
+        <p class="micro">Nothing is sent until you confirm a time.</p>
+      </form>
+      <div class="bk__cal" data-reveal style="--rd:.12">
+        <div class="bk__step bk__step--cal"><span>2</span><p class="h4">Pick a time that suits you</p></div>
+        <div class="bk__frame" data-cal-frame>
+          <div class="bk__wait" data-cal-wait>
+            <svg class="bk__glyph" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M24 44c0-10 2-15 2-22a8 8 0 1 0-8 8c3.4 0 5-2.8 3.6-5.2"/></svg>
+            <p class="h3">Ruchi’s calendar opens here.</p>
+            <p class="muted">Times show in your own time zone. Mornings, evenings and weekends are available.</p>
+            <button class="btn btn--fern" type="button" data-cal-load><span>Show available times</span><span class="btn__ico">{{ARROW}}</span></button>
+          </div>
+        </div>
+        <div class="bk__done" data-cal-done hidden>
+          <p class="hand" style="color:var(--moss)">You’re booked.</p>
+          <p class="h3">Ruchi will see you soon.</p>
+          <p class="muted">A confirmation is on its way to your inbox. Until then, be gentle with yourself.</p>
+          <div class="btns"><a class="btn btn--ghost btn--ico" href="reflections.html"><span>Take a quiet minute</span><span class="btn__ico">{{ARROW}}</span></a></div>
+        </div>
+        <p class="micro bk__alt">Calendar not loading? <a data-cal-direct href="https://calendly.com/ruchiwidgebagga/book-a-discovery-call" target="_blank" rel="noopener">Open it on Calendly</a> or write to <a href="mailto:ruchi@iamcontent.care">ruchi@iamcontent.care</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec t-dark" aria-labelledby="call-title">
+  {{FERN}}
+  <div class="wrap">
+    <div class="sec-head sec-head--split">
+      <p class="eyebrow">The discovery call</p>
+      <h2 class="h1" id="call-title" data-split>What happens when <em>you book?</em></h2>
+      <p class="lead" data-reveal>A short, free conversation. You don’t need to prepare anything or know exactly what you want.</p>
+    </div>
+    <ol class="call">
+      <li class="call__step" data-reveal><h3 class="h3">Pick a time</h3><p>Choose a slot that suits you on the calendar. Mornings, evenings and weekends are available.</p></li>
+      <li class="call__step" data-reveal style="--rd:.12"><h3 class="h3">Talk for 15 minutes</h3><p>Share what’s on your mind. Ruchi listens and asks a few questions about where you’d like to go.</p></li>
+      <li class="call__step" data-reveal style="--rd:.24"><h3 class="h3">Decide, no pressure</h3><p>If it feels right, you plan your sessions together. If not, you leave with a little more clarity.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec t-paper" aria-labelledby="faq-title">
+  <div class="wrap faq-grid">
+    <div class="sec-head">
+      <p class="eyebrow">Before you book</p>
+      <h2 class="h1" id="faq-title" data-split>Good questions <em>to ask.</em></h2>
+      <p class="lead" data-reveal>Prefer writing? <a href="contact.html#write" style="text-decoration:underline;text-underline-offset:4px">Send Ruchi a note</a> instead.</p>
+    </div>
+    {{FAQ [
+      ["What happens on the discovery call?", "A free 15-minute conversation about what’s on your mind and whether coaching is the right next step. There’s no pressure and no commitment."],
+      ["Do you work online or in person?", "Both. Sessions run online for clients anywhere in the world, and in person in Goa, India."],
+      ["What does a coaching program include?", "Usually about three months of weekly 60-minute 1:1 online sessions, personalised reflective homework, breathwork and movement where helpful, psychological and coaching tools chosen for you, and SOS support for urgent moments."],
+      ["Is this the right place if I’m in crisis?", "Coaching and counselling are not a crisis service. In India, Tele-MANAS is free and open 24/7 on 14416. If you’re outside India, please contact your local emergency number or a helpline near you."]
+    ] FAQ}}
+  </div>
+</section>

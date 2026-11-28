@@ -1,4 +1,4 @@
-{"title": "Contact Ruchi · I Am Content", "desc": "Get in touch with Ruchi Widge Bagga for coaching, workshops, collaborations, or just to say hello. Book a free 15-minute discovery call.", "hero": "dark", "nav": "contact", "og": "roses.webp"}
+{"title": "Contact Ruchi · I Am Content", "desc": "Get in touch with Ruchi Widge Bagga for coaching, workshops, collaborations, or just to say hello. Book a free 15-minute discovery call.", "hero": "dark", "nav": "contact", "og": "roses.webp", "curtain": "Let’s <em>talk</em>"}
 <section class="hero hero--dark hero-page" aria-labelledby="hero-title">
   <div class="hero__glow" aria-hidden="true"><i></i><i></i><i></i></div>
   {{FERN}}
@@ -30,7 +30,7 @@
   </div>
 </section>
 
-<section class="sec t-paper-2" id="write" aria-labelledby="f-title">
+<section class="sec t-paper-2" id="write" aria-labelledby="f-title" data-note="If someone used the Loop Check, the quiz, the self-check or the talk planner, it shows up here and is sent with the message. While no form service is connected, the message opens as a pre-filled email.">
   <div class="wrap grid-2 grid-2--top">
     <div class="stack" style="--s:22px">
       <p class="eyebrow">Write to Ruchi</p>
@@ -54,6 +54,12 @@
           <div class="field"><label for="c-email">Email</label><input id="c-email" name="email" type="email" autocomplete="email" required></div>
         </div>
         <div class="field"><label for="c-msg">Message</label><textarea id="c-msg" name="message" required placeholder="What’s on your mind?"></textarea></div>
+        <div class="ctx-box" data-ctx-box hidden>
+          <p class="eyebrow eyebrow--plain">Sent along with your message</p>
+          <ul class="ctx-list" data-ctx-list></ul>
+          <p class="micro">From the tools you used on the site. Remove anything you’d rather not send.</p>
+        </div>
+        <input type="hidden" name="context" data-ctx-field>
         <button class="btn btn--ink btn--block" type="submit"><span>Send message</span><span class="btn__ico">{{ARROW}}</span></button>
       </form>
       <div class="form__ok" hidden><p class="h4">Thank you. Your note is ready.</p><p>If your email app didn’t open, write to <b>ruchi@iamcontent.care</b>.</p><a class="link-arrow" data-mailto href="mailto:ruchi@iamcontent.care">Open in my email app {{ARROW}}</a></div>
